@@ -1,0 +1,10 @@
+.dashboard {
+  display: flex;
+  margin: 3rem 3rem 0 3rem;
+  &__navigation {
+    margin-top: 1rem;
+  }
+  &__content {
+    width: 100%;
+  }
+}

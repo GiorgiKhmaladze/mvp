@@ -45,8 +45,8 @@ export const Sidebar: React.FC = () => {
 
     const generateSidenavItems = () =>
         sidebarItems.map((sidebar, i) => {
-            return <div className='sidebar__item'>
-                <Link to={sidebar.linkTo} key={`${sidebar.alt}${i}`}>
+            return <div key={`${sidebar.alt}${i}`} className='sidebar__item'>
+                <Link to={sidebar.linkTo}>
                     <img
                         className={sidebar.linkTo === location.pathname ? 'active' : ''}
                         src={sidebar.icon}

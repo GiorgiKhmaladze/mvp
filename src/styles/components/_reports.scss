@@ -1,0 +1,16 @@
+.reports {
+  width: inherit;
+  margin-left: 3rem;
+  &__header {
+    display: flex;
+    &--info {
+      &-label {
+          color: $color-text-primary;
+          font-size: 2.5rem;
+      }
+      &-description {
+          color: $color-text-secondary;
+      }
+    }
+  }
+}

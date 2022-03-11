@@ -2,7 +2,10 @@
 @import './styles/components/header';
 @import './styles/components/footer';
 @import './styles/components/sidebar';
-@import './styles/components/dashboard';
+@import './styles/layout/dashboard';
+@import './styles/components/reports';
+@import './styles/components/select';
+@import './styles/components/filter';
 
 *,
 *::after,
