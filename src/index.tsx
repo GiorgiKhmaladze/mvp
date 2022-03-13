@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './routes';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import ReduxStore from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={ReduxStore()}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

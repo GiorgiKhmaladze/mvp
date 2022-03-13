@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
-import { Option, Select } from '../../utils/select';
+import { Select } from '../../utils/Select';
+import { Datepicker } from '../../utils/Datepicker';
+import { Filter } from '../../interfaces/filter.interface';
+import { Option } from '../../interfaces/form.interface';
 
-type StringOrdate = Date | string;
-
-export interface Filter {
-    projectId?: string;
-    gatewayId?: string;
-    from?: Date;
-    to?: Date;
-}
+type StringOrDate = Date | string;
 
 interface Props {
-    projects: Option[];
-    gateways: Option[];
+    projects?: Option[];
+    gateways?: Option[];
     onFilter: (filters: Filter) => void;
 }
 
 export const Filters: React.FC<Props> = ({ projects, gateways, onFilter }) => {
     const [filters, setFilters] = useState<Filter>({});
 
-    const updateFilter = (name: string, value: StringOrdate) => {
+    const updateFilter = (name: string, value: StringOrDate) => {
         setFilters((filters) => {
             return { ...filters, [name]: value }
         })
@@ -29,11 +25,39 @@ export const Filters: React.FC<Props> = ({ projects, gateways, onFilter }) => {
             <div className='filter__item'>
                 <Select
                     options={projects}
-                    value="12312312"
+                    value={filters.projectId}
                     label="All projects"
                     onSelect={(value) => updateFilter('projectId', value)}
                 />
             </div>
+            <div className='filter__item'>
+                <Select
+                    options={gateways}
+                    value={filters.gatewayId}
+                    label="All gateways"
+                    onSelect={(value) => updateFilter('gatewayId', value)}
+                />
+            </div>
+            <div className='filter__item'>
+                <Datepicker
+                    from={filters.from}
+                    placeholder="From date"
+                    onSelect={(value) => updateFilter('from', value)}
+                />
+            </div>
+            <div className='filter__item'>
+                <Datepicker
+                    to={filters.to}
+                    placeholder="To date"
+                    onSelect={(value) => updateFilter('to', value)}
+                />
+            </div>
+            <button
+                onClick={() => onFilter(filters)}
+                className='button'
+            >
+                Generate report
+            </button>
         </div>
     )
 }

@@ -1,4 +1,6 @@
+@import "~bootstrap/scss/bootstrap";
 @import './styles/abstract/variables';
+@import './styles/base/typography';
 @import './styles/components/header';
 @import './styles/components/footer';
 @import './styles/components/sidebar';
@@ -6,6 +8,12 @@
 @import './styles/components/reports';
 @import './styles/components/select';
 @import './styles/components/filter';
+@import './styles/components/datepicker';
+@import './styles/components/button';
+@import './styles/components/accordion';
+@import './styles/components/chart';
+@import './styles/base/utilities';
+@import './styles/components/home';
 
 *,
 *::after,

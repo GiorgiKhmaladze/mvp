@@ -1,13 +1,9 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-
-export interface Option {
-    value: string;
-    label: string;
-}
+import { Option } from '../interfaces/form.interface';
 
 interface Props {
-    options: Option[];
+    options?: Option[];
     label: string;
     value?: string;
     onSelect: (value: string) => void;
@@ -15,7 +11,7 @@ interface Props {
 
 export const Select: React.FC<Props> = ({ options, label, value, onSelect }) => {
     const generateOptions = () =>
-        options.map((option, i) => {
+        options?.map((option, i) => {
             return <option key={`${option.value}${i}`} value={option.value}>{option.label}</option>
 
         });

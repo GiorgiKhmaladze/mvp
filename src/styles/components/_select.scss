@@ -3,3 +3,6 @@ select {
   background-color: $color-primary !important;
   color: $color-white !important;
 }
+.form-select {
+  background-image: url('../../assets/images/arrow-down.svg') !important;
+}

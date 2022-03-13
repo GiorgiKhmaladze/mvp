@@ -1,0 +1,29 @@
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem !important;
+  background-color: $color-primary !important;
+  color: $color-white !important;
+  height: 100% !important;
+  border: none;
+  padding-left: 1rem;
+  ::placeholder {
+    color: $color-white !important;
+  }
+  :focus {
+    outline: none;
+  }
+}
+
+.date-picker {
+  position: relative;
+  height: 100%;
+  width: auto;
+  img {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+  }
+}
