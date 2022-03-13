@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './components/home';
@@ -14,11 +14,11 @@ export interface User {
 }
 
 function App() {
-  const [user, setUser] = useState<User>({
+  const user: User = {
     firstName: 'John',
     lastName: 'Doe',
     nickName: 'JD'
-  })
+  };
   return (
     <Router>
       <>

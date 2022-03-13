@@ -21,7 +21,7 @@ interface Props {
 }
 
 export const Content: React.FC<Props> = ({ type, projects, gateways, reports, title, tableHeaders, filteredBy }) => {
-    const [reportsForAccordion, setReportsForAccordion] = useState(new Map<string, ReportsPerFilter>());
+    const [reportsPerIds, setReportsPerIds] = useState(new Map<string, ReportsPerFilter>());
     const [totalSum, setTotalSum] = useState<string>();
 
     useEffect(() => {
@@ -37,9 +37,10 @@ export const Content: React.FC<Props> = ({ type, projects, gateways, reports, ti
             gatewayMemoizedMap.set(project.gatewayId, { name: '', sum: 0, list: [], color: '#' + Math.floor(Math.random() * 16777215).toString(16) })
         });
 
-
+        // build map and generate mappedReports as well
         tmpMappedReports = generateReportsAndFillMaps(reports, gateways, projects, gatewayMemoizedMap, projectsMemoizedMap);
 
+        // fill the list of reports per projectId and gatewayId
         tmpMappedReports.forEach(report => {
             const gatewayValue = gatewayMemoizedMap.get(report.gatewayId);
             if (gatewayValue) {
@@ -55,18 +56,19 @@ export const Content: React.FC<Props> = ({ type, projects, gateways, reports, ti
         });
 
         let sum;
+        // determine which data will be displayed inside the table
         if (Object.keys(filteredBy).length === 1 && filteredBy.projectId) {
-            setReportsForAccordion(gatewayMemoizedMap);
+            setReportsPerIds(gatewayMemoizedMap);
             sum = getTotalSum(projectsMemoizedMap);
         } else {
-            setReportsForAccordion(projectsMemoizedMap);
+            setReportsPerIds(projectsMemoizedMap);
             sum = getTotalSum(projectsMemoizedMap);
         }
         setTotalSum(sum);
     }, [reports, projects, gateways, filteredBy])
 
     const dataForSingleTable = () => {
-        const data = reportsForAccordion.get(filteredBy.projectId);
+        const data = reportsPerIds.get(filteredBy.projectId);
         let list: MappedReport[] = [];
         if (data) {
             list = ([...data.list].filter(e => e.gatewayId === filteredBy.gatewayId));
@@ -86,7 +88,7 @@ export const Content: React.FC<Props> = ({ type, projects, gateways, reports, ti
                                     Object.keys(filteredBy).length === 2
                                         ?
                                         <Table tableHeaders={tableHeaders} list={dataForSingleTable()} />
-                                        : <Accordion tableHeaders={tableHeaders} reportsByFilter={reportsForAccordion} />
+                                        : <Accordion tableHeaders={tableHeaders} reportsByFilter={reportsPerIds} />
                                 }
                             </div>
                             {
@@ -97,7 +99,7 @@ export const Content: React.FC<Props> = ({ type, projects, gateways, reports, ti
                         {
                             type === PageType.WithCharts ?
                                 <div className='content__right'>
-                                    <Chart data={reportsForAccordion} />
+                                    <Chart data={reportsPerIds} />
                                     <div className='background sum'>{filteredBy.projectId ? 'PROJECT TOTAL |' : 'GATEWAY TOTAL |'} {totalSum} USD</div>
                                 </div> : null
                         }

@@ -21,6 +21,7 @@ export const Reports: React.FC = () => {
     const [tableHeaders, setTableHeaders] = useState<string[]>([]);
     const [filteredBy, setFilteredBy] = useState<{ [key: string]: string }>({});
 
+    // for dropdown select options
     const [mappedProjects, setMappedProjects] = useState<Option[]>();
     const [mappedGateways, setMappedGateways] = useState<Option[]>();
 

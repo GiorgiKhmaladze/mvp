@@ -13,7 +13,7 @@ export const modifyDate = (date: Date | string, type: FormatType) => {
     if (type === FormatType.String) {
         return moment(date).format('YYYY-MM-DD');
     } else {
-        return new Date(date)
+        return new Date(date);
     }
 };
 
@@ -67,7 +67,7 @@ export const generateReportsAndFillMaps = (
 export const formatAmount = (amount: number) => {
     const newAmount = amount.toFixed(3).split(".");
     newAmount[0] = newAmount[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return newAmount.join('.')
+    return newAmount.join('.');
 }
 
 
@@ -78,14 +78,14 @@ export const generateChartData = (data: Map<string, ReportsPerFilter>): Chart =>
         data: [],
         labels: [],
     }
-    keys.forEach(key=> {
+    keys.forEach(key => {
         const item = data.get(key);
         if (item) {
             chartData.backgroundColor.push(item.color);
             chartData.labels.push(item.name);
             chartData.data.push(item.sum);
         }
-    })
+    });
     return chartData;
 }
 
