@@ -55,7 +55,7 @@ export const Content: React.FC<Props> = ({ type, projects, gateways, reports, ti
         });
 
         let sum;
-        if (Object.keys(filteredBy).length === 2 || filteredBy.projectId) {
+        if (Object.keys(filteredBy).length === 1 && filteredBy.projectId) {
             setReportsForAccordion(gatewayMemoizedMap);
             sum = getTotalSum(projectsMemoizedMap);
         } else {
