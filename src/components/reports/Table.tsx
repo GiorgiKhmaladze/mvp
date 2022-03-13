@@ -3,8 +3,8 @@ import { Table as TableComponent } from 'react-bootstrap';
 import { MappedReport } from '../../interfaces/report.interface';
 
 interface Props {
-    tableHeaders: string[]
-    list: MappedReport[]
+    tableHeaders: string[];
+    list: MappedReport[];
 }
 
 export const Table: React.FC<Props> = ({ tableHeaders, list }) => {

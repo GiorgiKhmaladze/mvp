@@ -1,14 +1,21 @@
-$color-primary: #1BC5BD;
-$color-secondary: #005B96;
+$color-primary: #1bc5bd;
+$color-secondary: #005b96;
 
-$color-primary-light: #F1FAFE;
+$color-primary-light: #f1fafe;
 
-$color-white: #F3F6F9;
+$color-white: #f3f6f9;
 $color-black: #000;
 
-$color-text-primary: #011F4B;
-$color-text-secondary: #7E8299;
+$color-text-primary: #011f4b;
+$color-text-secondary: #7e8299;
 
-$color-avatar-primary: #F6CA65;
+$color-avatar-primary: #f6ca65;
 
 $default-font-size: 1.6rem;
+
+// table variable override
+$table-border-width: 0;
+$table-striped-bg: $color-primary-light;
+$table-accent-bg: #fff;
+$table-color: $color-text-primary;
+$table-striped-color: $color-text-primary;
